@@ -6,30 +6,23 @@ namespace Dota2App.Client
 {
     public class BaseClient
     {
-        private RestClient RestClient;
+        private RestClient _restClient;
 
-        private static BaseClient Client;
+        private static BaseClient _client;
 
         private BaseClient()
         {
-            RestClient = new RestClient();
-        }
-
-        private BaseClient(string baseUrl)
-        {
-            RestClient = new(baseUrl);
+            _restClient = new RestClient();
         }
 
         public static BaseClient GetClient() =>
-            Client == null ? new BaseClient() : Client;
-
-        public static BaseClient GetClient(string baseUrl) => Client == null ? new BaseClient(baseUrl) : Client;
+            _client == null ? new BaseClient() : _client;
 
         public T SendRestRequest<T>(string request)
         {
             var restRqst = new RestRequest(request);
 
-            var response = RestClient.Execute(restRqst);
+            var response = _restClient.Execute(restRqst);
 
             var unparsedContent = response.Content;
 
