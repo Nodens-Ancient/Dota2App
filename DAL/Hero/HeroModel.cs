@@ -66,5 +66,11 @@ namespace Dota2App.Models
 
         [JsonProperty("attack_rate")]
         public float AttackSpeed { get; set; }
+
+        [JsonProperty("day_vision")] 
+        public float DayVision { get; set; }
+
+        [JsonProperty("night_vision")]
+        public float NightVision { get; set; }
     }
 }

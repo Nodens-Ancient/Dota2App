@@ -25,6 +25,10 @@ namespace Dota2App.Models.DTO
         /// it could be calculated
         /// </summary>
         [JsonProperty("winrate")]
-        public float? Winrate { get; set; }
+        public float? Winrate
+        {
+            get { return (float)Wins / (float)GamesPlayed * 100; }
+            set { Winrate = value; }
+        }
     }
 }

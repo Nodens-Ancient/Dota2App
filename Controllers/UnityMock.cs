@@ -15,12 +15,8 @@ namespace Dota2App.Controllers
         private DotaAppBaseController _dotaController;
 
         private DataManager _dataManager;
-
-        private readonly ILogger<DotaAppBaseController> _logger;
-
-        public UnityMock(ILogger<DotaAppBaseController> logger, DataManager dataManager, DotaAppBaseController dotaController)
+        public UnityMock(DataManager dataManager, DotaAppBaseController dotaController)
         {
-            _logger = logger;
             _client = BaseClient.GetClient();
 
             _dataManager = dataManager;
@@ -84,13 +80,12 @@ namespace Dota2App.Controllers
             var matchups = _dotaController
                 .GetHeroMatchups(heroId)
                 .Where(matchup => matchup.GamesPlayed >= leastPlayedMatches)
-                .OrderBy(match => (float)match.Wins / (float)match.GamesPlayed)
+                .OrderBy(match => match.Winrate)
                 .Take(numberOfHeroes)
                 .ToList();
             matchups.ForEach(matchup =>
             {
                 matchup.HeroName = _dataManager.GetHero(matchup.HeroId).Name;
-                matchup.Winrate = (float)matchup.Wins / (float)matchup.GamesPlayed * 100;
             });
             return matchups;
         }
