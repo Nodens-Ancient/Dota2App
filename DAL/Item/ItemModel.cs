@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Dota2App.DAL.Item;
+using Newtonsoft.Json;
 
 namespace Dota2App.Models
 {
@@ -12,5 +13,8 @@ namespace Dota2App.Models
 
         [JsonProperty("cost")]
         public int? Cost { get; set; }
+
+        [JsonProperty("attrib")]
+        public List<ItemAttribute> AttributeBonuses { get; set; }
     }
 }
