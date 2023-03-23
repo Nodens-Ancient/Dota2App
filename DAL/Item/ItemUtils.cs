@@ -6,11 +6,7 @@ namespace Dota2App.DAL.Item
     public static class ItemUtils
     {
         
-        //public static readonly string BonusDamage = "bonus_damage";
-        //public static readonly string BonusDamage = "bonus_damage";
-        //public static readonly string BonusDamage = "bonus_damage";
-        //public static readonly string BonusDamage = "bonus_damage";
-        //public static readonly string BonusDamage = "bonus_damage";
+        
     }
 
     public static class ItemAttributeBonusKeys
@@ -30,6 +26,7 @@ namespace Dota2App.DAL.Item
         public static readonly string BonusMana = "bonus_mana";
         public static readonly string BonusEvasion = "bonus_evasion";
         public static readonly string BonusAttackRange = "base_attack_range";
+        public static readonly string BonusMagicResist = "tooltip_resist";
     }
 
     public class ItemAttributeJSONConverter : JsonConverter

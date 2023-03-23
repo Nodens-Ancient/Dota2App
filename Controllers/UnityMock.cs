@@ -1,4 +1,5 @@
 ﻿using Dota2App.Client;
+using Dota2App.Core;
 using Dota2App.Models;
 using Dota2App.Models.DataManagers;
 using Dota2App.Models.DTO;
@@ -88,6 +89,19 @@ namespace Dota2App.Controllers
                 matchup.HeroName = _dataManager.GetHero(matchup.HeroId).Name;
             });
             return matchups;
+        }
+
+        [HttpGet("GetHero1LVL")]
+        public Hero Get1LvlHero(int heroId)
+        {
+            return HeroUtills.HeroModelToHeroMap(_dataManager.GetHero(heroId));
+        }
+
+        [HttpGet("GetHeroSelectedLevel")]
+        public Hero GetHeroWithLevel(int heroId, int heroLvl)
+        {
+            var hero = HeroUtills.HeroModelToHeroMap(_dataManager.GetHero(heroId));
+            return LevelProcessor.SetHeroLevel(ref hero, heroLvl);
         }
     }
 }
