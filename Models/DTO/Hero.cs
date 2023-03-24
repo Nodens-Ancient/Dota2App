@@ -2,18 +2,43 @@
 {
     public class Hero : HeroModel
     {
-        public float Strength { get; set; }
-        public float Agility { get; set; }
-        public float Intellect { get; set; }
-        public float HealthRegen { get; set; }
-        public float ManaRegen { get; set; }
-        public float Damage { get; set; }
-        public float Health { get; set; }
-        public float Mana { get; set; } 
-        public int Level { get; set; }
-        public float Armor { get; set; }
-        public float Evasion { get; set; }
-        public float MagicResist { get; set; }
+        public float Strength { get; private set; }
+        public float Agility { get; private set; }
+        public float Intellect { get; private set; }
+        public float HealthRegen { get; private set; }
+        public float ManaRegen { get; private set; }
+        public float Damage { get; private set; }
+        public float Health { get; private set; }
+        public float Mana { get; private set; } 
+        public int Level { get; private set; }
+        public float Armor { get; private set; }
+        public float Evasion { get; private set; }
+        public float MagicResist { get; private set; }
+        public float PhysResist { get; private set; }
+
+        public void AddStrength(float str) => Strength += str;
+        public void AddAgility(float agi) => Agility += agi;
+        public void AddIntellect(float intellect) => Intellect += intellect;
+        public void AddHealthRegen(float hReg) => HealthRegen += hReg;
+        public void AddManaRegen(float mReg) => ManaRegen += mReg;
+        public void AddMana(float mana) => Mana += mana;
+        public void AddHealth(float health) => ManaRegen += health;
+        public void AddDamage(float dmg) => Damage += dmg;
+        public void AddArmor(float armr)
+        {
+            Armor += armr;
+            PhysResist = (0.052f * Armor) / (0.9f + 0.048f * Armor);
+        }
+        public void AddEvasion(float evasion)
+        {
+            var ev = Evasion / 100.0f;
+            Evasion = (ev + (1 - ev) * evasion) * 100;
+        }
+        public void AddMagicResist(float resist)
+        {
+            var mr = MagicResist / 100.0f;
+            MagicResist = (mr + (1 - mr) * resist) * 100;
+        }
 
         public Hero(HeroModel heroModel)
         {
