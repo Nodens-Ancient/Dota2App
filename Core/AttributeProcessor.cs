@@ -15,33 +15,36 @@ namespace Dota2App.Core
 
         public static Hero AddStrength(ref Hero hero, float str)
         {
-            hero.Strength += str;
-            hero.Health += str * AttributeConstants.StrengthHealthBoost;
+            hero.Strength += (float)Math.Round(str, MidpointRounding.AwayFromZero);
+            hero.Health += (int)(str) * AttributeConstants.StrengthHealthBoost;
             hero.HealthRegen += str * AttributeConstants.StrengthHealthRegenBoost;
 
-            if (hero.MainAttribute == BaseAttributes.Strength) hero.Damage += str * AttributeConstants.StrengthDamageBoost;
+            if (hero.MainAttribute == BaseAttributes.Strength) 
+                hero.Damage += (float)Math.Round(str * AttributeConstants.StrengthDamageBoost, MidpointRounding.AwayFromZero);
 
             return hero;
         }
 
         public static Hero AddAgility(ref Hero hero, float agility)
         {
-            hero.Agility += agility;
+            hero.Agility += (float)Math.Round(agility, MidpointRounding.AwayFromZero); ;
             hero.Armor += agility * AttributeConstants.AgilityArmorBoost;
             hero.AttackSpeed += agility * AttributeConstants.AgilityAttackSpedBoost;
 
-            if (hero.MainAttribute == BaseAttributes.Agility) hero.Damage += agility * AttributeConstants.AgilityDamageBoost;
-
+            if (hero.MainAttribute == BaseAttributes.Agility) 
+                hero.Damage += (float)Math.Round(agility * AttributeConstants.AgilityDamageBoost, MidpointRounding.AwayFromZero);
+           
             return hero;
         }
 
         public static Hero AddAIntellect(ref Hero hero, float intellect)
         {
-            hero.Intellect += intellect;
-            hero.Mana += intellect * AttributeConstants.IntellectManaBoost;
+            hero.Intellect += (float)Math.Round(intellect, MidpointRounding.AwayFromZero);
+            hero.Mana += (int)intellect * AttributeConstants.IntellectManaBoost;
             hero.ManaRegen +=  intellect * AttributeConstants.IntellectManaRegenBoost;
 
-            if (hero.MainAttribute == BaseAttributes.Intellect) hero.Damage += intellect * AttributeConstants.IntellectDamageBoost;
+            if (hero.MainAttribute == BaseAttributes.Intellect) 
+                hero.Damage += (float)Math.Round(intellect * AttributeConstants.IntellectDamageBoost, MidpointRounding.AwayFromZero);
 
             return hero;
         }
