@@ -27,6 +27,8 @@ namespace Dota2App.DAL.Item
         public static readonly string BonusEvasion = "bonus_evasion";
         public static readonly string BonusAttackRange = "base_attack_range";
         public static readonly string BonusMagicResist = "tooltip_resist";
+        public static readonly string BonusMovementSpeedPercent = "movement_speed_percent_bonus";
+        public static readonly string StatusResistance = "status_resistance";
     }
 
     public class ItemAttributeJSONConverter : JsonConverter

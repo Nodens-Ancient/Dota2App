@@ -94,13 +94,18 @@ namespace Dota2App.Controllers
         [HttpGet("GetHero1LVL")]
         public Hero Get1LvlHero(int heroId)
         {
-            return HeroUtills.HeroModelToHeroMap(_dataManager.GetHero(heroId));
+            var heroModel = _dataManager.GetHero(heroId);
+            var hero = new Hero(heroModel);
+            return HeroUtills.InitHero(ref hero);
         }
 
         [HttpGet("GetHeroSelectedLevel")]
         public Hero GetHeroWithLevel(int heroId, int heroLvl)
         {
-            var hero = HeroUtills.HeroModelToHeroMap(_dataManager.GetHero(heroId));
+            var heroModel = _dataManager.GetHero(heroId);
+            var hero = new Hero(heroModel);
+            HeroUtills.InitHero(ref hero);
+
             return LevelProcessor.SetHeroLevel(ref hero, heroLvl);
         }
     }

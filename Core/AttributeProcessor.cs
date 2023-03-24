@@ -19,7 +19,7 @@ namespace Dota2App.Core
             hero.Health += (int)(str) * AttributeConstants.StrengthHealthBoost;
             hero.HealthRegen += str * AttributeConstants.StrengthHealthRegenBoost;
 
-            if (hero.MainAttribute == BaseAttributes.Strength) 
+            if (hero.MainAttribute == BaseAttributes.Strength)
                 hero.Damage += (float)Math.Round(str * AttributeConstants.StrengthDamageBoost, MidpointRounding.AwayFromZero);
 
             return hero;
@@ -31,9 +31,9 @@ namespace Dota2App.Core
             hero.Armor += agility * AttributeConstants.AgilityArmorBoost;
             hero.AttackSpeed += agility * AttributeConstants.AgilityAttackSpedBoost;
 
-            if (hero.MainAttribute == BaseAttributes.Agility) 
+            if (hero.MainAttribute == BaseAttributes.Agility)
                 hero.Damage += (float)Math.Round(agility * AttributeConstants.AgilityDamageBoost, MidpointRounding.AwayFromZero);
-           
+
             return hero;
         }
 
@@ -41,9 +41,9 @@ namespace Dota2App.Core
         {
             hero.Intellect += (float)Math.Round(intellect, MidpointRounding.AwayFromZero);
             hero.Mana += (int)intellect * AttributeConstants.IntellectManaBoost;
-            hero.ManaRegen +=  intellect * AttributeConstants.IntellectManaRegenBoost;
+            hero.ManaRegen += intellect * AttributeConstants.IntellectManaRegenBoost;
 
-            if (hero.MainAttribute == BaseAttributes.Intellect) 
+            if (hero.MainAttribute == BaseAttributes.Intellect)
                 hero.Damage += (float)Math.Round(intellect * AttributeConstants.IntellectDamageBoost, MidpointRounding.AwayFromZero);
 
             return hero;

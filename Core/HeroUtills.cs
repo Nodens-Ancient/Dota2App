@@ -7,30 +7,20 @@ namespace Dota2App.Core
     {
         public static Hero HeroModelToHeroMap(HeroModel hModel)
         {
-            var hero = new Hero()
-            {
-                Id = hModel.Id,
-                Name = hModel.Name,
-                Level = 1,
-                MainAttribute = hModel.MainAttribute,
-
-                MagicResist = hModel.BaseMagicResist,
-                StrengthGain = hModel.StrengthGain,
-                AgilityGain = hModel.AgilityGain,
-                IntellectGain = hModel.IntellectGain,
-
-                Health = hModel.BaseHealth,
-                Mana = hModel.BaseMana,
-                HealthRegen = hModel.BaseHealthRegen,
-                ManaRegen = hModel.BaseManaRegen,
-                Armor = hModel.BaseArmor,
-                Damage = (hModel.BaseAttackDamageMax + hModel.BaseAttackDamageMin) / 2.0f
-            };
+            Hero hero = new Hero(hModel);
 
             AttributeProcessor.AddStrength(ref hero, hModel.BaseStrength);
             AttributeProcessor.AddAgility(ref hero, hModel.BaseAgility);
             AttributeProcessor.AddAIntellect(ref hero, hModel.BaseIntellect);
             
+            return hero;
+        }
+
+        public static Hero InitHero(ref Hero hero)
+        {
+            AttributeProcessor.AddStrength(ref hero, hero.BaseStrength);
+            AttributeProcessor.AddAgility(ref hero, hero.BaseAgility);
+            AttributeProcessor.AddAIntellect(ref hero, hero.BaseIntellect);
             return hero;
         }
     }
