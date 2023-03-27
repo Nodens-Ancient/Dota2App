@@ -14,7 +14,7 @@ namespace Dota2App.Models
         public string MainAttribute { get; set; }
 
         [JsonProperty("move_speed")]
-        public int MoveSpeed { get; set; }
+        public int BaseMoveSpeed { get; set; }
 
         [JsonProperty("base_health")]
         public int BaseHealth { get; set; }

@@ -15,6 +15,6 @@ namespace Dota2App.Models
         public int? Cost { get; set; }
 
         [JsonProperty("attrib")]
-        public List<ItemAttribute> AttributeBonuses { get; set; }
+        public List<ItemAttribute>? AttributeBonuses { get; set; }
     }
 }

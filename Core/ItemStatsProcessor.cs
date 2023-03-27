@@ -1,48 +1,81 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using Dota2App.DAL.Item;
+using Dota2App.Models;
 using Dota2App.Models.DTO;
 
 namespace Dota2App.Core
 {
     public class ItemStatsProcessor
     {
-        public void AddBonusDamage(ref Hero hero, float bonusDamage)
+        public static void AddHeroItems(ref Hero hero, List<ItemModel> items)
         {
-            hero.Damage += bonusDamage;
-        }
+            var tHero = hero;
+            items.ForEach(item =>
+            {
+                item.AttributeBonuses.ForEach(itemBonus =>
+                {
+                    //var bonusValue = float.Parse(itemBonus.Values.First().Value);
 
-        public void AddBonusHealth(ref Hero hero, float health)
-        {
-            hero.Health += health;
-        }
-
-        public void AddBonusHealthRegen(ref Hero hero, float healthRegen)
-        {
-            hero.HealthRegen += healthRegen;
-        }
-
-        public void AddBonusMana(ref Hero hero, float mana)
-        {
-            hero.Mana += mana;
-        }
-
-        public void AddBonusManaRegen(ref Hero hero, float manaRegen)
-        {
-            hero.ManaRegen += manaRegen;
-        }
-
-        public void AddBonusArmor(ref Hero hero, float armor)
-        {
-            hero.Armor += armor;//TODO calculate according to mechanics
-        }
-
-        public void AddBonusMagicResistance(ref Hero hero, float magicResistance)
-        {
-            hero.MagicResist += magicResistance;//TODO calculate according to mechanics
-        }
-
-        public void AddBonusEvasion(ref Hero hero, float evasion)
-        {
-            hero.Evasion += evasion;//TODO calculate according to mechanics
+                    switch (itemBonus.Key)
+                    {
+                        //case ItemAttributeBonusKeys.BonusDamage:
+                        //    tHero.AddDamage(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusHealth:
+                        //    tHero.AddHealth(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusAgility:
+                        //    AttributeProcessor.AddAgility(ref tHero, bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusArmor:
+                        //    tHero.AddArmor(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusEvasion:
+                        //    tHero.AddEvasion(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusIntellect:
+                        //    AttributeProcessor.AddIntellect(ref tHero, bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusStrength:
+                        //    AttributeProcessor.AddStrength(ref tHero, bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusMana:
+                        //    tHero.AddMana(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusAttackSpeed:
+                        //    tHero.AddAttackSpeed(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusAllStats:
+                        //    AttributeProcessor.AddAllStats(ref tHero, bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusHealthRegen:
+                        //    tHero.AddHealthRegen(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusManaRegen:
+                        //    tHero.AddManaRegen(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusMagicResist:
+                        //    tHero.AddMagicResist(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusNightVision:
+                        //    tHero.AddNightVision(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusAttackRange:
+                        //    tHero.AddAttackRange(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusMovementSpeed:
+                        //    tHero.AddMoveSpeed(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.BonusMovementSpeedPercent:
+                        //    tHero.AddMoveSpeedPercent(bonusValue);
+                        //    break;
+                        //case ItemAttributeBonusKeys.StatusResistance:
+                        //    tHero.AddStatusResistance(bonusValue);
+                        //    break;
+                        default:
+                            break;
+                    }
+                });
+            });
         }
 
         public void AddBonusNightVision(ref Hero hero, float nightVision)
@@ -67,7 +100,7 @@ namespace Dota2App.Core
 
         public void AddIntellect(ref Hero hero, float intellect)
         {
-            AttributeProcessor.AddAIntellect(ref hero, intellect);
+            AttributeProcessor.AddIntellect(ref hero, intellect);
         }
     }
 }

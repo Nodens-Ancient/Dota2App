@@ -8,7 +8,7 @@ namespace Dota2App.Core
         {
             AddStrength(ref hero, AllAttributesBoost);
             AddAgility(ref hero, AllAttributesBoost);
-            AddAIntellect(ref hero, AllAttributesBoost);
+            AddIntellect(ref hero, AllAttributesBoost);
 
             return hero;
         }
@@ -37,7 +37,7 @@ namespace Dota2App.Core
             return hero;
         }
 
-        public static Hero AddAIntellect(ref Hero hero, float intellect)
+        public static Hero AddIntellect(ref Hero hero, float intellect)
         {
             hero.AddIntellect((float)Math.Round(intellect, MidpointRounding.AwayFromZero));
             hero.AddMana((int)intellect * AttributeConstants.IntellectManaBoost);

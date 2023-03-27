@@ -1,4 +1,5 @@
 ﻿using Dota2App.Context;
+using Dota2App.DAL.Item;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dota2App.Models.DataManagers
@@ -18,7 +19,15 @@ namespace Dota2App.Models.DataManagers
 
         public List<ItemModel> GetItems() => ApplicationContext.Items.ToList();
 
-        public  ItemModel GetItem(int itemId) => ApplicationContext.Items.Find(itemId);
+        //public  ItemModel GetItem(int itemId) => ApplicationContext.Items.Find(itemId);
+        public  ItemModel GetItem(int itemId)
+        {
+            var item = ApplicationContext.Items
+                .Include(itm => itm!.AttributeBonuses)!
+                .ThenInclude(bns => bns!.Values)
+                .First(itm => itm.Id == itemId);
+            return item;
+        } 
 
         public void DatabaseSaveItems(IEnumerable<ItemModel> itemList)
         {

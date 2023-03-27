@@ -7,10 +7,10 @@ namespace Dota2App.Core
         public static Hero SetHeroLevel(ref Hero hero, int level = 1)
         {
             if (level <= 0) level = 1;
-            hero.Level = level;
+            //hero. = level;
             AttributeProcessor.AddStrength(ref hero, (level - 1) * hero.StrengthGain);
             AttributeProcessor.AddAgility(ref hero, (level - 1) * hero.AgilityGain);
-            AttributeProcessor.AddAIntellect(ref hero, (level - 1) * hero.IntellectGain);
+            AttributeProcessor.AddIntellect(ref hero, (level - 1) * hero.IntellectGain);
             return hero;
         }
     }

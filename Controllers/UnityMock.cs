@@ -108,5 +108,15 @@ namespace Dota2App.Controllers
 
             return LevelProcessor.SetHeroLevel(ref hero, heroLvl);
         }
+
+        [HttpPost("GetHeroWithItems")]
+        public Hero GetHeroWithItems(int heroId, List<int> itemIds)
+        {
+            var hero = Get1LvlHero(heroId);
+            List<ItemModel> items = new List<ItemModel>();
+            itemIds.ForEach(id => items.Add(_dataManager.GetItem(id)));
+            ItemStatsProcessor.AddHeroItems(ref hero, items);
+            return hero;
+        }
     }
 }

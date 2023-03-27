@@ -15,6 +15,10 @@
         public float Evasion { get; private set; }
         public float MagicResist { get; private set; }
         public float PhysResist { get; private set; }
+        public float BonusMSPercentageSpeed { get; private set; }
+        public int BonusMSStaticSpeed { get; private set; }
+        public int MoveSpeed { get; private set; }
+        public float StatusResistance { get; private set; }
 
         public void AddStrength(float str) => Strength += str;
         public void AddAgility(float agi) => Agility += agi;
@@ -24,6 +28,19 @@
         public void AddMana(float mana) => Mana += mana;
         public void AddHealth(float health) => ManaRegen += health;
         public void AddDamage(float dmg) => Damage += dmg;
+        public void AddNightVision(float nVision) => NightVision += nVision;
+
+        public void AddMoveSpeed(float ms)
+        {
+            BonusMSStaticSpeed += (int)ms;
+            MoveSpeed += (int)ms;
+        }
+
+        public void AddMoveSpeedPercent(float msPersent)
+        {
+            BonusMSPercentageSpeed += msPersent;
+            MoveSpeed = (int)((BaseMoveSpeed + BonusMSStaticSpeed) * (1 + BonusMSPercentageSpeed));
+        }
         public void AddArmor(float armr)
         {
             Armor += armr;
@@ -39,6 +56,9 @@
             var mr = MagicResist / 100.0f;
             MagicResist = (mr + (1 - mr) * resist) * 100;
         }
+        public void AddAttackSpeed(float spd) => AttackSpeed += spd;
+        public void AddAttackRange(float range) => AttackRange += (int)range;
+        public void AddStatusResistance(float res) => StatusResistance += res;
 
         public Hero(HeroModel heroModel)
         {
@@ -70,12 +90,13 @@
             AttackRange = heroModel.AttackRange;
 
             AttackSpeed = heroModel.AttackSpeed;
-            MoveSpeed = heroModel.MoveSpeed;
+            BaseMoveSpeed = heroModel.BaseMoveSpeed;
             Damage = (heroModel.BaseAttackDamageMax + heroModel.BaseAttackDamageMin) / 2.0f;
 
             Health = BaseHealth;
             Mana = BaseMana;
             MagicResist = BaseMagicResist;
+            MoveSpeed = BaseMoveSpeed;
         }
     }
 }
