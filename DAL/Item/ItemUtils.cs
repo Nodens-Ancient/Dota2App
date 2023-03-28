@@ -3,12 +3,6 @@ using Newtonsoft.Json.Linq;
 
 namespace Dota2App.DAL.Item
 {
-    public static class ItemUtils
-    {
-        
-        
-    }
-
     public class ItemAttributeBonusKeys
     {
         public const string BonusDamage = "bonus_damage";

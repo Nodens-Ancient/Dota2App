@@ -8,8 +8,6 @@ namespace Dota2App.Context
     {   
         public DbSet<HeroModel> Heroes { get; set; }
         public DbSet<ItemModel> Items { get; set; }
-        public DbSet<ItemAttribute> ItemAttribute { get; set; }
-        public DbSet<ItemAttributeValue> ItemAttributeValue { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) { }
         public ApplicationContext() : base() { }

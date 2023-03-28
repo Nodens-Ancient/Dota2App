@@ -19,7 +19,6 @@ namespace Dota2App.Models.DataManagers
 
         public List<ItemModel> GetItems() => ApplicationContext.Items.ToList();
 
-        //public  ItemModel GetItem(int itemId) => ApplicationContext.Items.Find(itemId);
         public  ItemModel GetItem(int itemId)
         {
             var item = ApplicationContext.Items

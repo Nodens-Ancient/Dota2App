@@ -1,5 +1,4 @@
-﻿using Dota2App.Models;
-using Dota2App.Models.DTO;
+﻿using Dota2App.Models.DTO;
 
 namespace Dota2App.Core
 {
