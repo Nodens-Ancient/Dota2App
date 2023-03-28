@@ -1,4 +1,5 @@
-﻿using Dota2App.Models;
+﻿using Dota2App.DAL.Item;
+using Dota2App.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dota2App.Context
