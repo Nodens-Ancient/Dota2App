@@ -13,14 +13,5 @@ namespace Dota2App.Context
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) { }
         public ApplicationContext() : base() { }
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<ItemModel>()
-        //        .HasMany(c => c.AttributeBonuses)
-        //        .WithOne(e => e.ItemModel)
-        //        .OnDelete(DeleteBehavior.Cascade);
-        //    base.OnModelCreating(modelBuilder);
-        //}
     }
 }
